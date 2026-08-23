@@ -38,6 +38,7 @@ namespace CarServiceManager.Pages.User
                     {
                         var result = await _helper.RegisterUserAsync(Users);
                         NotificationMessage = result.Message;
+                        return RedirectToPage("/Index");
                     }
                 }
                 else

@@ -15,12 +15,14 @@ namespace CarServiceManager.Pages
             _context = context;
         }
 
-        public Users? User { get; set; }
+        public Users? LoggedInUser { get; set; }
 
         public async Task<IActionResult> OnGet()
         {
-            User = await _context.Users
-                .Where(u => u.pkiUserID == 1)
+            var UserID = HttpContext.Session.GetInt32("UserID");
+
+            LoggedInUser = await _context.Users
+                .Where(u => u.pkiUserID == UserID)
                 .FirstOrDefaultAsync();
 
             return Page();

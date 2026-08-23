@@ -1,7 +1,10 @@
 using CarServiceManager.Data;
 using CarServiceManager.Helpers;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace CarServiceManager.Pages.User
 {
@@ -50,9 +53,31 @@ namespace CarServiceManager.Pages.User
                 else
                 {
                     NotificationMessage = "Login successful!";
+
+                    HttpContext.Session.SetInt32("UserID", user.pkiUserID);
+                    HttpContext.Session.SetString("UserName", user.userName ?? string.Empty);
+                    HttpContext.Session.SetString("UserEmail", user.userEmail ?? string.Empty);
+
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, user.userName ?? string.Empty),
+                        new Claim(ClaimTypes.Email, user.userEmail ?? string.Empty),
+                        new Claim("UserID", user.pkiUserID.ToString())
+                    };
+
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    await HttpContext.SignInAsync(
+                        "CookieAuth",
+                        new ClaimsPrincipal(claimsIdentity),
+                        new AuthenticationProperties
+                        {
+                            IsPersistent = true,
+                            ExpiresUtc = DateTime.UtcNow.AddHours(1)
+                        });
                 }
 
-                return RedirectToPage("/Home");
+                return RedirectToPage("/Index");
 
             }
             catch (Exception ex)

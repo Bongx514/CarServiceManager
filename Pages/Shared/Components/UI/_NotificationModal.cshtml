@@ -1,4 +1,55 @@
-﻿@page
-@model CarServiceManager.Pages.Shared.Components.UI._NavbarModel
-@{
+﻿@{
+    var message = TempData["NotificationMessage"]?.ToString();
+}
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="modal fade"
+         id="notificationModal"
+         tabindex="-1"
+         aria-labelledby="notificationModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">
+                        <i class="bi bi-exclamation-circle me-2"></i>
+                        Notification
+                    </h5>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    @message
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-bs-dismiss="modal">
+                        OK
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modalElement = document.getElementById("notificationModal");
+
+            if (modalElement) {
+                const notificationModal = new bootstrap.Modal(modalElement);
+                notificationModal.show();
+            }
+        });
+    </script>
 }

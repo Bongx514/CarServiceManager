@@ -1,7 +1,17 @@
+using CarServiceManager.Data;
+using CarServiceManager.Helpers;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<CarServiceContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddTransient<DbHelper>();
 
 var app = builder.Build();
 

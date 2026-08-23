@@ -1,0 +1,31 @@
+﻿@page "/registration"
+@model CarServiceManager.Pages.User.RegistrationModel
+@{
+    var NotificationMessage = Model?.NotificationMessage;
+}
+
+<form method="post">
+    <div>
+        <label>Username</label>
+        <input type="text" asp-for="Users.userName" />
+
+        <label>Email Address</label>
+        <input type="text" asp-for="Users.userEmail" />
+
+        <label>First Name</label>
+        <input type="text" asp-for="Users.firstName" />
+
+        <label>Last Name</label>
+        <input type="text" asp-for="Users.lastName" />
+
+        <label>Password</label>
+        <input type="text" asp-for="Users.hashPassword" />
+
+        <label>Confirm Password</label>
+        <input type="text" asp-for="ConfirmPassword" />
+    </div>
+
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>

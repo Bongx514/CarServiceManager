@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.list-item {
+    list-style: none;
+    padding: 8px;
+}
+
+.item {
+    text-decoration: none;
+}

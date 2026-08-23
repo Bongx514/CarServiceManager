@@ -7,15 +7,19 @@
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/input.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CarServiceManager.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <partial name="Components/_Navbar" />
+        <partial name="Components/UI/_Navbar" />
     </header>
 
     <div class="container">
-        <partial name="Components/_NotificationModal" />
+        @if (TempData["NotificationMessage"] != null)
+        {
+            <partial name="Components/UI/_NotificationModal" />
+        }
 
         <main role="main" class="pb-3">
             @RenderBody()
@@ -23,7 +27,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <partial name="Components/_Footer" />
+        <partial name="Components/UI/_Footer" />
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -1,24 +1,97 @@
-﻿<nav class="flex fixed w-full bg-white justify-content-center m-0 py-2 px-4">
-    <div class="logo-container">
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    var UserID = HttpContextAccessor?.HttpContext?.Session.GetInt32("UserID");
+}
 
-    </div>
+@if (UserID != null)
+{
+    <nav class="fixed top-0 z-50 w-full border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="/"
+               class="flex items-center gap-3">
 
-    <div class="navigation">
-        <ul class="nav-links">
-            <li class="list-item">
-                <a href="#" class="item">Home</a>
-            </li>
-            <li class="list-item">
-                <a href="#" class="item">My Vehicles</a>
-            </li>
-            <li class="list-item">
-                <a href="#" class="item">My Schedule</a>
-            </li>
-            <li class="list-item">
-                <a href="#" class="item">Support</a>
-            </li>
-        </ul>
-    </div>
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-600 shadow-md shadow-teal-600/20">
+                    <i class="fa-solid fa-car text-base text-white"></i>
+                </div>
 
+                <div class="hidden sm:block">
+                    <span class="block text-sm font-bold tracking-tight text-slate-900">
+                        Car Service Manager
+                    </span>
+                    <span class="block text-xs text-slate-400">
+                        Vehicle Management
+                    </span>
+                </div>
+            </a>
 
-</nav>
+            <div class="hidden md:flex md:items-center md:rounded-2xl md:bg-slate-50 md:p-1">
+                <a href="/"
+                   class="flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-teal-700 shadow-sm transition hover:bg-white">
+                    <i class="fa-solid fa-house text-sm"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="/Vehicle"
+                   class="group flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-500 transition hover:bg-white hover:text-teal-700">
+                    <i class="fa-solid fa-car text-sm text-slate-400 transition group-hover:text-teal-600"></i>
+                    <span>My Vehicles</span>
+                </a>
+
+                <a href="/Schedule"
+                   class="group flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-500 transition hover:bg-white hover:text-teal-700">
+                    <i class="fa-solid fa-calendar-days text-sm text-slate-400 transition group-hover:text-teal-600"></i>
+                    <span>My Schedule</span>
+                </a>
+
+                <a href="/Support"
+                   class="group flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-500 transition hover:bg-white hover:text-teal-700">
+                    <i class="fa-solid fa-headset text-sm text-slate-400 transition group-hover:text-teal-600"></i>
+                    <span>Support</span>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button type="button"
+                        class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 transition hover:border-teal-200 hover:bg-teal-50 hover:text-teal-600">
+                    <i class="fa-solid fa-user text-sm"></i>
+                </button>
+
+                <form method="post" action="/Logout">
+                    <button type="submit"
+                            title="Logout"
+                            class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-400 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600">
+                        <i class="fa-solid fa-right-from-bracket text-sm"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="border-t border-slate-100 bg-white px-3 py-2 md:hidden">
+            <div class="grid grid-cols-4 gap-1">
+                <a href="/"
+                   class="flex flex-col items-center gap-1 rounded-xl bg-teal-50 px-2 py-2 text-xs font-semibold text-teal-700">
+                    <i class="fa-solid fa-house text-sm"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="/Vehicle"
+                   class="flex flex-col items-center gap-1 rounded-xl px-2 py-2 text-xs font-medium text-slate-500 transition hover:bg-slate-50 hover:text-teal-600">
+                    <i class="fa-solid fa-car text-sm"></i>
+                    <span>Vehicles</span>
+                </a>
+
+                <a href="/Schedule"
+                   class="flex flex-col items-center gap-1 rounded-xl px-2 py-2 text-xs font-medium text-slate-500 transition hover:bg-slate-50 hover:text-teal-600">
+                    <i class="fa-solid fa-calendar-days text-sm"></i>
+                    <span>Schedule</span>
+                </a>
+
+                <a href="/Support"
+                   class="flex flex-col items-center gap-1 rounded-xl px-2 py-2 text-xs font-medium text-slate-500 transition hover:bg-slate-50 hover:text-teal-600">
+                    <i class="fa-solid fa-headset text-sm"></i>
+                    <span>Support</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+}

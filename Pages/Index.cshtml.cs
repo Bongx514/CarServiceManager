@@ -21,6 +21,11 @@ namespace CarServiceManager.Pages
         {
             var UserID = HttpContext.Session.GetInt32("UserID");
 
+            if (UserID == null)
+            {
+                return RedirectToPage("/User/Login");
+            }
+
             LoggedInUser = await _context.Users
                 .Where(u => u.pkiUserID == UserID)
                 .FirstOrDefaultAsync();

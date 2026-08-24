@@ -1,6 +1,127 @@
-﻿@page
+﻿@page "/login"
 @model CarServiceManager.Pages.User.LoginModel
 @{
 }
 
+<div class="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-md">
+        <div class="text-center mb-8">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-600 shadow-lg shadow-teal-600/20">
+                <i class="fa-solid fa-car text-white"></i>
+            </div>
 
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900">
+                Car Service Manager
+            </h1>
+
+            <p class="mt-2 text-sm text-slate-500">
+                Sign in to manage your vehicles and services
+            </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/50">
+            <div class="mb-7">
+                <h2 class="text-xl font-semibold text-slate-900">
+                    Welcome back
+                </h2>
+
+                <p class="mt-1 text-sm text-slate-500">
+                    Enter your details to continue.
+                </p>
+
+                @if (!string.IsNullOrWhiteSpace(TempData["Message"] as string))
+                {
+                    <div class="mb-6 flex items-start rounded-xl border border-red-200 bg-red-50 p-4">
+                        <i class="fa-solid fa-triangle-exclamation text-red-200"></i>
+                        <p class="text-sm text-red-700">
+                            @TempData["Message"]
+                        </p>
+                    </div>
+                }
+            </div>
+
+            <form method="post" class="space-y-5">
+                <div>
+                    <label for="EmailAddress"
+                           class="mb-2 block text-sm font-medium text-slate-700">
+                        Email address
+                    </label>
+
+                    <div class="relative">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+                            <i class="fa-regular fa-envelope text-slate-400"></i>
+                        </div>
+
+                        <input type="email"
+                               id="EmailAddress"
+                               asp-for="EmailAddress"
+                               placeholder="you@example.com"
+                               autocomplete="email"
+                               required
+                               class="block w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" />
+
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="mb-2 flex items-center justify-between">
+                        <label for="Password"
+                               class="block text-sm font-medium text-slate-700">
+                            Password
+                        </label>
+                    </div>
+
+                    <div class="relative">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+                            <i class="fa-solid fa-lock text-slate-400"></i>
+                        </div>
+
+                        <input type="password"
+                               id="Password"
+                               asp-for="Password"
+                               placeholder="Enter your password"
+                               autocomplete="current-password"
+                               required
+                               class="block w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" />
+
+                    </div>
+                </div>
+
+
+                <div class="flex items-center">
+                    <input type="checkbox"
+                           id="remember"
+                           class="h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500">
+
+                    <label for="remember"
+                           class="ml-2 text-sm text-slate-600">
+                        Remember me
+                    </label>
+                </div>
+
+                <button type="submit"
+                        class="flex w-full items-center justify-center rounded-xl bg-teal-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-600/20 transition duration-200 hover:bg-teal-700 hover:shadow-teal-600/30 focus:outline-none focus:ring-4 focus:ring-teal-500/20 active:scale-[0.99]">
+                    Sign in
+                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </form>
+
+            <div class="mt-7 border-t border-slate-100 pt-6 text-center">
+                <p class="text-sm text-slate-500">
+                    Don't have an account?
+
+                    <a href="/Registration"
+                       class="font-semibold text-teal-600 hover:text-teal-700">
+                        Create an account
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+        <p class="mt-6 text-center text-xs text-slate-400">
+            © @DateTime.Now.Year Car Service Manager. All rights reserved.
+        </p>
+    </div>
+</div>

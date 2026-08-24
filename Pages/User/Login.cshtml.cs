@@ -13,9 +13,10 @@ namespace CarServiceManager.Pages.User
         private readonly CarServiceContext _context;
         private readonly DbHelper _helper;
 
-        public LoginModel(CarServiceContext context)
+        public LoginModel(CarServiceContext context, DbHelper dbHelper)
         {
             _context = context;
+            _helper = dbHelper;
         }
 
         [BindProperty]
@@ -33,59 +34,47 @@ namespace CarServiceManager.Pages.User
         {
             if(string.IsNullOrWhiteSpace(EmailAddress))
             {
-                NotificationMessage = "Email address is required.";
+                TempData["Message"] = "Email address is required.";
             }
 
             if(string.IsNullOrWhiteSpace(Password))
             {
-                NotificationMessage = "Password is required.";
+                TempData["Message"] = "Password is required.";
             }
 
-            try
+            var user = await _helper.LoginAsync(EmailAddress, Password);
+
+            if (user == null)
             {
-                var user = await _helper.LoginAsync(EmailAddress, Password);
+                TempData["Message"] = "Invalid email or password.";
+                return Page();
+            }
 
-                if (user == null)
-                {
-                    NotificationMessage = "Invalid email or password.";
-                    return Page();
-                }
-                else
-                {
-                    NotificationMessage = "Login successful!";
+            NotificationMessage = "Login successful!";
 
-                    HttpContext.Session.SetInt32("UserID", user.pkiUserID);
-                    HttpContext.Session.SetString("UserName", user.userName ?? string.Empty);
-                    HttpContext.Session.SetString("UserEmail", user.userEmail ?? string.Empty);
+            HttpContext.Session.SetInt32("UserID", user.pkiUserID);
+            HttpContext.Session.SetString("UserName", user.userName ?? string.Empty);
+            HttpContext.Session.SetString("UserEmail", user.userEmail ?? string.Empty);
 
-                    var claims = new List<Claim>
+            var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.userName ?? string.Empty),
                         new Claim(ClaimTypes.Email, user.userEmail ?? string.Empty),
                         new Claim("UserID", user.pkiUserID.ToString())
                     };
 
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    await HttpContext.SignInAsync(
-                        "CookieAuth",
-                        new ClaimsPrincipal(claimsIdentity),
-                        new AuthenticationProperties
-                        {
-                            IsPersistent = true,
-                            ExpiresUtc = DateTime.UtcNow.AddHours(1)
-                        });
-                }
+            await HttpContext.SignInAsync(
+                "CookieAuth",
+                new ClaimsPrincipal(claimsIdentity),
+                new AuthenticationProperties
+                {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTime.UtcNow.AddHours(1)
+                });
 
-                return RedirectToPage("/Index");
-
-            }
-            catch (Exception ex)
-            {
-                NotificationMessage = "An error occurred during login: " + ex.Message;
-            }
-
-            return RedirectToAction("Index");
+            return RedirectToPage("/Index");
         }
     }
 }

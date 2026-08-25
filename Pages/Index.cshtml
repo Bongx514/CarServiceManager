@@ -1,10 +1,43 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="min-h-screen bg-slate-50 flex flex-column items-center justify-center px-4 py-12">
-    <h1 class="display-4">Welcome @Model?.LoggedInUser?.firstName</h1>
-    
+<link rel="stylesheet" href="~/css/pages/dashboard.css" asp-append-version="true" />
+
+<div class="dashboard-page min-h-screen bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div class="mb-8">
+            <p class="mb-1 text-sm font-medium text-teal-600">
+                Vehicle Dashboard
+            </p>
+
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                Welcome back, @Model?.LoggedInUser?.firstName
+            </h1>
+
+            <p class="mt-2 text-sm text-slate-500">
+                Here's an overview of your vehicle and its maintenance.
+            </p>
+        </div>
+
+
+      
+
+
+        <div class="mb-4 flex items-center justify-between">
+            <div>
+                <h2 class="text-lg font-semibold text-slate-900">
+                    My Vehicle
+                </h2>
+
+                <p class="mt-1 text-sm text-slate-500">
+                    Vehicle information and maintenance overview.
+                </p>
+            </div>
+        </div>
+
+        <partial name="Components/UI/_VehicleTile" />
+    </div>
 </div>

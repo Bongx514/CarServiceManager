@@ -1,0 +1,14 @@
+﻿.dashboard-page {
+    min-height: calc(100vh - 4rem);
+    position: relative;
+    top: 50px;
+}
+
+.dashboard-page .vehicle-card {
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.dashboard-page .vehicle-card:hover {
+    border-color: rgb(153 246 228);
+    box-shadow: 0 10px 30px rgb(15 23 42 / 0.06);
+}

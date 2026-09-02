@@ -1,4 +1,5 @@
 ﻿using CarServiceManager.Models;
+using CarServiceManager.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarServiceManager.Data
@@ -12,6 +13,7 @@ namespace CarServiceManager.Data
         public DbSet<MaintenanceRecord> MaintenanceRecords { get; set; }
         public DbSet<VehicleMakeLookUp> VehicleMakeLookUp { get; set; }
         public DbSet<MaintenanceTypeLookUp> MaintenanceTypeLookUp { get; set; }
+        public DbSet<vw_VehicleDetails> vw_VehicleDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +24,7 @@ namespace CarServiceManager.Data
             modelBuilder.Entity<MaintenanceRecord>().HasKey(u => u.pkiMaintenanceID);
             modelBuilder.Entity<VehicleMakeLookUp>().HasNoKey();
             modelBuilder.Entity<MaintenanceTypeLookUp>().HasNoKey();
+            modelBuilder.Entity<vw_VehicleDetails>().HasNoKey();
         }
     }
 }

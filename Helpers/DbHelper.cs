@@ -15,6 +15,25 @@ namespace CarServiceManager.Helpers
             _context = context;
         }
 
+        public async Task<(bool Success, string Message)> AddVehicleAsync(Vehicles vehicles)
+        {
+
+            try
+            {
+                vehicles.dateCreated = DateTime.UtcNow;
+                vehicles.isActive = true;
+
+                _context.Vehicles.Add(vehicles);
+                await _context.SaveChangesAsync();
+                return (true, "Vehicle added successfully.");
+            }
+            catch (Exception ex)
+            {
+                return (false, $"Error adding vehicle: {ex.InnerException?.Message ?? ex.Message}");
+            }
+
+        }
+
         public async Task<(bool Success, string Message)> RegisterUserAsync(Users user)
         {
             try

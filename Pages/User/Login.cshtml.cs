@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace CarServiceManager.Pages.User
@@ -26,8 +27,22 @@ namespace CarServiceManager.Pages.User
         [TempData]
         public string? NotificationMessage { get; set; }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            try
+            {
+                await _context.Database.OpenConnectionAsync();
+
+                Console.WriteLine("DB Connected successfully");
+
+                await _context.Database.CloseConnectionAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"DB Connection failed: {ex.Message}");
+            }
+
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()

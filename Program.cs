@@ -1,5 +1,6 @@
 using CarServiceManager.Data;
 using CarServiceManager.Helpers;
+using CarServiceManager.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CarServiceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+builder.Services.AddHttpClient<AuthService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:8080");
+});
 
 // Add services to the container.
 builder.Services.AddRazorPages();

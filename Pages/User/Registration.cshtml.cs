@@ -1,6 +1,7 @@
 using CarServiceManager.Data;
 using CarServiceManager.Helpers;
 using CarServiceManager.Models;
+using CarServiceManager.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,15 +11,17 @@ namespace CarServiceManager.Pages.User
     {
         private readonly CarServiceContext _context;
         private readonly DbHelper _helper;
+        private readonly AuthService _authService;
 
-        public RegistrationModel(CarServiceContext context, DbHelper helper)
+        public RegistrationModel(CarServiceContext context, DbHelper helper, AuthService authService)
         {
             _context = context;
             _helper = helper;
+            _authService = authService;
         }
 
         [BindProperty]
-        public Users Users { get; set; }
+        public RegisterRequest RegisterRequest { get; set; } = new();
         [BindProperty]
         public string? ConfirmPassword { get; set; }
         [TempData]
@@ -34,11 +37,16 @@ namespace CarServiceManager.Pages.User
             {
                 if(ModelState.IsValid)
                 {
-                    if (Users.hashPassword == ConfirmPassword)
+                    var response = await _authService.RegisterAsync(RegisterRequest);
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        var result = await _helper.RegisterUserAsync(Users);
-                        NotificationMessage = result.Message;
-                        return RedirectToPage("/Index");
+                        NotificationMessage = "Registration successful! Please log in.";
+                    }
+                    else
+                    {
+                        var errorContent = await response.Content.ReadAsStringAsync();
+                        NotificationMessage = $"Registration failed: {errorContent}";
                     }
                 }
                 else
@@ -50,7 +58,8 @@ namespace CarServiceManager.Pages.User
             {
                 NotificationMessage = "An error occurred during registration: " + ex.Message;
             }
-            return RedirectToAction("/Login");
+
+            return RedirectToPage("/Login");
         }
     }
 }

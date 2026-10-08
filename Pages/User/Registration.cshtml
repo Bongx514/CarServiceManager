@@ -48,7 +48,7 @@
 
                     <input type="text"
                            id="Username"
-                           asp-for="Users.userName"
+                           asp-for="RegisterRequest.userName"
                            placeholder="Enter username"
                            autocomplete="username"
                            required
@@ -64,7 +64,7 @@
 
                     <input type="email"
                            id="EmailAddress"
-                           asp-for="Users.userEmail"
+                           asp-for="RegisterRequest.userEmail"
                            placeholder="you@example.com"
                            autocomplete="email"
                            required
@@ -81,7 +81,7 @@
 
                         <input type="text"
                                id="FirstName"
-                               asp-for="Users.firstName"
+                               asp-for="RegisterRequest.firstName"
                                placeholder="First name"
                                autocomplete="given-name"
                                required
@@ -97,7 +97,7 @@
 
                         <input type="text"
                                id="LastName"
-                               asp-for="Users.lastName"
+                               asp-for="RegisterRequest.lastName"
                                placeholder="Last name"
                                autocomplete="family-name"
                                required
@@ -114,7 +114,7 @@
 
                     <input type="password"
                            id="Password"
-                           asp-for="Users.hashPassword"
+                           asp-for="RegisterRequest.password"
                            placeholder="Create a password"
                            autocomplete="new-password"
                            required

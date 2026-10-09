@@ -68,12 +68,27 @@ namespace CarServiceManager.Pages.User
             }
             else
             {
-                //var user = await _context.Users.FirstOrDefaultAsync(u => u.userEmail == LoginRequest.userEmail);
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.userEmail == LoginRequest.userEmail);
+
+                if (user == null)
+                {
+                    TempData["Message"] = "User not found.";
+                    return Page();
+                }
+
                 var jwt = new JwtSecurityTokenHandler().ReadJwtToken(response.Token);
 
                 HttpContext.Session.SetInt32("UserID", int.Parse(jwt.Claims.First(c => c.Type == "nameid").Value));
                 HttpContext.Session.SetString("UserName", jwt.Claims.First(c => c.Type == "unique_name").Value);
                 HttpContext.Session.SetString("UserEmail", jwt.Claims.First(c => c.Type == "email").Value);
+
+                if (user.pkiUserID != int.Parse(jwt.Claims.First(c => c.Type == "nameid").Value))
+                {
+                    TempData["Message"] = "User ID mismatch.";
+                    await HttpContext.SignOutAsync("CookieAuth");
+                    HttpContext.Session.Clear();
+                    return Page();
+                }
 
                 var claims = new List<Claim>
                     {

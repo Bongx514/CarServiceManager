@@ -19,22 +19,25 @@ namespace CarServiceManager.Pages
         public Users? LoggedInUser { get; set; }
         public List<vw_VehicleDetails>? MyVehicles { get; set; }
         public string? txtMakeName { get; set; }
+        [TempData]
+        public string? NotificationMessage { get; set; }
 
         public async Task<IActionResult> OnGet()
         {
-            var UserEmail = HttpContext.Session.GetInt32("UserEmail");
+            var UserID = HttpContext.Session.GetInt32("UserID");
 
-            if (UserEmail == null)
+            if (UserID == null)
             {
+                NotificationMessage = "Authentication failed.";
                 return RedirectToPage("/User/Login");
             }
 
             LoggedInUser = await _context.Users
-                .Where(u => u.pkiUserID == UserEmail)
+                .Where(u => u.pkiUserID == UserID)
                 .FirstOrDefaultAsync();
 
             MyVehicles = await _context.vw_VehicleDetails
-                .Where(u => u.fkiUserId == UserEmail)
+                .Where(u => u.fkiUserId == UserID)
                 .ToListAsync();
 
             return Page();

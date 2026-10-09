@@ -54,7 +54,7 @@
 
                         <input type="email"
                                id="EmailAddress"
-                               asp-for="EmailAddress"
+                               asp-for="LoginRequest.userEmail"
                                placeholder="you@example.com"
                                autocomplete="email"
                                required
@@ -79,7 +79,7 @@
 
                         <input type="password"
                                id="Password"
-                               asp-for="Password"
+                               asp-for="LoginRequest.password"
                                placeholder="Enter your password"
                                autocomplete="current-password"
                                required

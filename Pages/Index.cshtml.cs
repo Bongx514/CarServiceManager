@@ -22,19 +22,19 @@ namespace CarServiceManager.Pages
 
         public async Task<IActionResult> OnGet()
         {
-            var UserID = HttpContext.Session.GetInt32("UserID");
+            var UserEmail = HttpContext.Session.GetInt32("UserEmail");
 
-            if (UserID == null)
+            if (UserEmail == null)
             {
                 return RedirectToPage("/User/Login");
             }
 
             LoggedInUser = await _context.Users
-                .Where(u => u.pkiUserID == UserID)
+                .Where(u => u.pkiUserID == UserEmail)
                 .FirstOrDefaultAsync();
 
             MyVehicles = await _context.vw_VehicleDetails
-                .Where(u => u.fkiUserId == UserID)
+                .Where(u => u.fkiUserId == UserEmail)
                 .ToListAsync();
 
             return Page();

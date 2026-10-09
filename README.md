@@ -337,7 +337,7 @@ Production credentials and other secrets must be supplied through secure environ
 
 ## Author
 
-CarServiceManager
+Bongani Thwala
 
 Personal vehicle maintenance and service tracking application.
 

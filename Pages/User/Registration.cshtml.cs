@@ -59,7 +59,7 @@ namespace CarServiceManager.Pages.User
                 NotificationMessage = "An error occurred during registration: " + ex.Message;
             }
 
-            return RedirectToPage("/Login");
+            return RedirectToPage("/User/Login");
         }
     }
 }

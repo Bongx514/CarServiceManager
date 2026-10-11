@@ -1,0 +1,239 @@
+﻿@page "/Security"
+@model CarServiceManager.Pages.User.SecurityModel
+@{
+    ViewData["Title"] = "Security";
+}
+
+<div class="min-h-screen bg-slate-50 px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+
+        <div class="mb-8">
+            <a href="/Profile" class="mb-4 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-teal-600">
+                <i class="fa-solid fa-arrow-left"></i> Back to profile
+            </a>
+            <p class="text-sm font-semibold uppercase tracking-widest text-teal-600">Account protection</p>
+            <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900">Security</h1>
+            <p class="mt-2 text-sm text-slate-500">Manage how you sign in and protect your account.</p>
+        </div>
+
+        <div class="mb-6 flex items-start gap-4 rounded-2xl border border-teal-100 bg-teal-50 p-5">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-teal-600 shadow-sm">
+                <i class="fa-solid fa-shield-halved text-lg"></i>
+            </div>
+            <div>
+                <h2 class="font-bold text-slate-900">Your security centre</h2>
+                <p class="mt-1 text-sm leading-6 text-slate-600">Review your sign-in preferences and use additional protection where available.</p>
+                <p class="mt-2 text-xs font-medium text-teal-800">Demo mode · Preferences are not enforced by the server.</p>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+
+            <section class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div class="border-b border-slate-100 px-6 py-5">
+                    <h2 class="font-bold text-slate-900">Sign-in protection</h2>
+                    <p class="mt-1 text-sm text-slate-500">Choose additional steps for signing in.</p>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">Two-factor authentication (2FA)</h3>
+                            <p class="mt-1 text-sm leading-5 text-slate-500">Require a second verification method in addition to your password.</p>
+                            <span id="twoFactorStatus" class="mt-2 inline-block text-xs font-medium text-slate-400">Not enabled</span>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="twoFactor" type="checkbox" class="peer sr-only security-toggle">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">OTP on every login</h3>
+                            <p class="mt-1 text-sm leading-5 text-slate-500">Request a one-time passcode every time you sign in, including on recognised devices.</p>
+                            <span id="otpStatus" class="mt-2 inline-block text-xs font-medium text-slate-400">Not enabled</span>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="otpEveryLogin" type="checkbox" class="peer sr-only security-toggle">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-500">
+                            <i class="fa-solid fa-user-lock"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">Block after 3 failed attempts</h3>
+                            <p class="mt-1 text-sm leading-5 text-slate-500">Lock sign-in temporarily after three consecutive unsuccessful attempts.</p>
+                            <span id="blockStatus" class="mt-2 inline-block text-xs font-medium text-slate-400">Not enabled</span>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="blockAttempts" type="checkbox" checked class="peer sr-only security-toggle">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">New login alerts</h3>
+                            <p class="mt-1 text-sm leading-5 text-slate-500">Receive an alert when your account is accessed from a new device.</p>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="loginAlerts" type="checkbox" checked class="peer sr-only security-toggle">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">Automatic session timeout</h3>
+                            <p class="mt-1 text-sm leading-5 text-slate-500">Choose how long you can remain inactive before the demo session should expire.</p>
+                        </div>
+                        <select id="sessionTimeout" class="max-w-32 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                            <option value="15">15 minutes</option>
+                            <option value="30" selected>30 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="120">2 hours</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 bg-slate-50/70 px-6 py-4">
+                    <p class="text-xs text-slate-500">Changes are local to this page.</p>
+                    <button id="saveSecurity" type="button" class="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-700">
+                        <i class="fa-solid fa-check mr-2"></i>Save preferences
+                    </button>
+                </div>
+            </section>
+
+            <section class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div class="border-b border-slate-100 px-6 py-5">
+                    <h2 class="font-bold text-slate-900">Password</h2>
+                    <p class="mt-1 text-sm text-slate-500">Use a unique password that you don't use on other websites.</p>
+                </div>
+
+                <form id="passwordForm" class="space-y-5 p-6">
+                    <label class="block">
+                        <span class="mb-2 block text-sm font-semibold text-slate-700">Current password</span>
+                        <input id="currentPassword" type="password" autocomplete="current-password" required
+                               class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                    </label>
+
+                    <label class="block">
+                        <span class="mb-2 block text-sm font-semibold text-slate-700">New password</span>
+                        <input id="newPassword" type="password" autocomplete="new-password" minlength="12" required
+                               class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                        <p class="mt-2 text-xs text-slate-400">Use at least 12 characters for this demo form.</p>
+                    </label>
+
+                    <label class="block">
+                        <span class="mb-2 block text-sm font-semibold text-slate-700">Confirm new password</span>
+                        <input id="confirmPassword" type="password" autocomplete="new-password" minlength="12" required
+                               class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                    </label>
+
+                    <div class="flex justify-end">
+                        <button type="submit" class="rounded-xl border border-teal-600 bg-white px-5 py-2.5 text-sm font-semibold text-teal-700 transition hover:bg-teal-50">
+                            Change password
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="rounded-2xl border border-red-100 bg-white p-6 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="font-bold text-slate-900">Sign out</h2>
+                        <p class="mt-1 text-sm text-slate-500">Finish your current session on this device.</p>
+                        <a href="/Logout" class="mt-4 inline-flex rounded-xl border border-red-200 px-4 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-50">
+                            Sign out of CarServiceManager
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <p id="securityMessage" role="status" aria-live="polite" class="hidden rounded-xl border border-teal-200 bg-teal-50 p-4 text-sm font-medium text-teal-800"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const message = document.getElementById("securityMessage");
+
+        function showMessage(text, isError = false) {
+            message.textContent = text;
+            message.classList.remove("hidden", "border-teal-200", "bg-teal-50", "text-teal-800", "border-red-200", "bg-red-50", "text-red-800");
+            message.classList.add(
+                ...(isError
+                    ? ["border-red-200", "bg-red-50", "text-red-800"]
+                    : ["border-teal-200", "bg-teal-50", "text-teal-800"])
+            );
+        }
+
+        function updateStatus(inputId, statusId) {
+            const input = document.getElementById(inputId);
+            const status = document.getElementById(statusId);
+            if (!status) return;
+            status.textContent = input.checked ? "Enabled in this demo" : "Disabled in this demo";
+            status.className = "mt-2 inline-block text-xs font-medium " +
+                (input.checked ? "text-teal-700" : "text-slate-400");
+        }
+
+        [
+            ["twoFactor", "twoFactorStatus"],
+            ["otpEveryLogin", "otpStatus"],
+            ["blockAttempts", "blockStatus"]
+        ].forEach(([inputId, statusId]) => {
+            const input = document.getElementById(inputId);
+            input.addEventListener("change", () => updateStatus(inputId, statusId));
+            updateStatus(inputId, statusId);
+        });
+
+        document.getElementById("saveSecurity").addEventListener("click", () => {
+            showMessage("Demo security preferences updated on this page only. No server security settings were changed.");
+        });
+
+        document.getElementById("passwordForm").addEventListener("submit", event => {
+            event.preventDefault();
+
+            const current = document.getElementById("currentPassword");
+            const next = document.getElementById("newPassword");
+            const confirm = document.getElementById("confirmPassword");
+
+            if (!event.currentTarget.reportValidity()) return;
+
+            if (current.value === next.value) {
+                showMessage("Your new password must be different from your current password.", true);
+                return;
+            }
+
+            if (next.value !== confirm.value) {
+                showMessage("Your new password and confirmation do not match.", true);
+                confirm.focus();
+                return;
+            }
+
+            event.currentTarget.reset();
+            showMessage("Password form validated successfully. No password was changed because this is frontend-only.");
+        });
+    })();
+</script>

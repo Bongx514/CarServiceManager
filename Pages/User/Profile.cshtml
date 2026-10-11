@@ -1,0 +1,167 @@
+﻿@page "/Profile"
+@model CarServiceManager.Pages.User.ProfileModel
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="min-h-screen bg-slate-50 px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-6xl">
+
+        <div class="mb-8">
+            <a href="/" class="mb-4 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-teal-600">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to dashboard
+            </a>
+            <p class="text-sm font-semibold uppercase tracking-widest text-teal-600">Account management</p>
+            <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900">My Profile</h1>
+            <p class="mt-2 text-sm text-slate-500">Manage your personal details and garage information.</p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-3">
+
+            <section class="h-fit overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                <div class="h-24 bg-gradient-to-r from-teal-500 to-teal-700"></div>
+                <div class="-mt-12 px-6 pb-6">
+                    <div class="flex h-24 w-24 items-center justify-center rounded-2xl border-4 border-white bg-teal-50 text-3xl text-teal-600 shadow-sm">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h2 id="profileDisplayName" class="mt-4 text-xl font-bold text-slate-900">Your Name</h2>
+                    <p id="profileDisplayEmail" class="mt-1 break-all text-sm text-slate-500">you@example.com</p>
+                    <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1.5 text-xs font-semibold text-teal-700">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Garage owner
+                    </div>
+
+                    <div class="mt-6 space-y-4 border-t border-slate-100 pt-5">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-50 text-slate-500">
+                                <i class="fa-solid fa-car"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Garage</p>
+                                <p class="text-sm font-semibold text-slate-700">My Vehicles</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-50 text-slate-500">
+                                <i class="fa-regular fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400">Stay on track</p>
+                                <a href="/Schedule" class="text-sm font-semibold text-teal-700 hover:text-teal-800">View service schedule</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lg:col-span-2">
+                <form id="profileForm" class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-6 py-5">
+                        <div>
+                            <h2 class="font-bold text-slate-900">Personal information</h2>
+                            <p class="mt-1 text-sm text-slate-500">Keep your account details up to date.</p>
+                        </div>
+                        <span class="rounded-lg bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-500">
+                            <i class="fa-solid fa-pen mr-1"></i> Editable
+                        </span>
+                    </div>
+
+                    <div class="grid gap-5 p-6 sm:grid-cols-2">
+                        <label class="block">
+                            <span class="mb-2 block text-sm font-semibold text-slate-700">First name</span>
+                            <input id="firstName" name="firstName" type="text" required value=""
+                                   placeholder="Enter first name"
+                                   class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                        </label>
+
+                        <label class="block">
+                            <span class="mb-2 block text-sm font-semibold text-slate-700">Last name</span>
+                            <input id="lastName" name="lastName" type="text" required value=""
+                                   placeholder="Enter last name"
+                                   class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                        </label>
+
+                        <label class="block">
+                            <span class="mb-2 block text-sm font-semibold text-slate-700">Email address</span>
+                            <input id="profileEmail" name="email" type="email" required value=""
+                                   placeholder="you@example.com"
+                                   class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                        </label>
+
+                        <label class="block">
+                            <span class="mb-2 block text-sm font-semibold text-slate-700">Phone number</span>
+                            <input id="phoneNumber" name="phone" type="tel" value=""
+                                   placeholder="+27 00 000 0000"
+                                   class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                        </label>
+
+                        <label class="block sm:col-span-2">
+                            <span class="mb-2 block text-sm font-semibold text-slate-700">Preferred vehicle</span>
+                            <select id="preferredVehicle" name="preferredVehicle"
+                                    class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                                <option value="">Select your preferred vehicle</option>
+                                <option value="BMW 120i">BMW 120i</option>
+                                <option value="Toyota Hilux">Toyota Hilux</option>
+                                <option value="other">Other / not listed</option>
+                            </select>
+                            <p class="mt-2 text-xs text-slate-400">Demo options only. Connect this to your registered vehicles later.</p>
+                        </label>
+                    </div>
+
+                    <div class="flex flex-wrap justify-end gap-3 border-t border-slate-100 bg-slate-50/70 px-6 py-4">
+                        <button type="reset" class="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100">
+                            Reset
+                        </button>
+                        <button type="submit" class="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700">
+                            <i class="fa-solid fa-check mr-2"></i>Save changes
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                            <i class="fa-solid fa-lightbulb text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900">A little garage tip</h3>
+                            <p class="mt-1 text-sm leading-6 text-slate-500">Keep your contact details up to date so your future service reminders can reach you when notifications are connected.</p>
+                            <a href="/Schedule" class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-teal-800">
+                                Explore your schedule <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <p id="profileMessage" role="status" aria-live="polite" class="mt-4 hidden rounded-xl border border-teal-200 bg-teal-50 p-4 text-sm font-medium text-teal-800"></p>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const form = document.getElementById("profileForm");
+        const message = document.getElementById("profileMessage");
+
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+
+            if (!form.reportValidity()) return;
+
+            document.getElementById("profileDisplayName").textContent =
+                `${document.getElementById("firstName").value.trim()} ${document.getElementById("lastName").value.trim()}`.trim();
+
+            document.getElementById("profileDisplayEmail").textContent =
+                document.getElementById("profileEmail").value.trim();
+
+            message.textContent = "Profile preview updated. Changes are not saved to a database.";
+            message.classList.remove("hidden");
+        });
+
+        form.addEventListener("reset", () => {
+            message.classList.add("hidden");
+        });
+    })();
+</script>

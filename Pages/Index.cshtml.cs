@@ -28,7 +28,6 @@ namespace CarServiceManager.Pages
 
             if (UserID == null)
             {
-                NotificationMessage = "Authentication failed.";
                 return RedirectToPage("/User/Login");
             }
 

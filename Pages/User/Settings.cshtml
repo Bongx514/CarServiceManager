@@ -1,0 +1,385 @@
+﻿@page "/Settings"
+@model CarServiceManager.Pages.User.SettingsModel
+@{
+    ViewData["Title"] = "Settings";
+}
+
+<div class="min-h-screen bg-slate-50 px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+
+    <div class="mb-8">
+        <a href="/Profile"
+           class="mb-5 inline-flex items-center gap-2 rounded-lg text-sm font-medium text-slate-500 transition hover:text-teal-600">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+            Back to profile
+        </a>
+
+        <div>
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-teal-600">
+                Personalise your experience
+            </p>
+
+            <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                Settings
+            </h1>
+
+            <p class="mt-3 max-w-xl text-sm leading-6 text-slate-500 sm:text-base">
+                Manage your preferences, reminders, and the way you use CarServiceManager.
+            </p>
+        </div>
+    </div>
+
+    <div class="mb-8 flex items-start gap-4 rounded-2xl border border-teal-100 bg-teal-50/50 p-5 sm:items-center sm:p-6">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-teal-600 shadow-sm">
+            <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+        </div>
+
+        <div class="min-w-0">
+            <h2 class="font-bold text-slate-900">
+                Make it yours
+            </h2>
+
+            <p class="mt-1 text-sm leading-6 text-slate-600">
+                Tailor your garage experience with preferences that work for you.
+            </p>
+        </div>
+    </div>
+
+
+        <div>
+            <section class="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" style="margin-bottom: 24px;">
+                <div class="border-b border-slate-100 px-6 py-5">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-slate-900">Appearance</h2>
+                            <p class="mt-1 text-sm text-slate-500">Customise how your dashboard looks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-5 p-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">Colour accent</h3>
+                            <p class="mt-1 text-sm text-slate-500">Choose the accent colour for your app.</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-teal-200 bg-teal-50 px-3 py-2">
+                                <input type="radio" name="accent" value="teal" checked class="accent-teal-600">
+                                <span class="text-sm font-semibold text-teal-800">Teal</span>
+                            </label>
+                            <label class="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 px-3 py-2">
+                                <input type="radio" name="accent" value="blue" class="accent-blue-600">
+                                <span class="text-sm font-medium text-slate-700">Blue</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-4 border-t border-slate-100 pt-5">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">Compact dashboard</h3>
+                            <p class="mt-1 text-sm text-slate-500">Prefer tighter spacing and more information on screen.</p>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="compactMode" type="checkbox" class="peer sr-only">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" style="margin-bottom: 24px;">
+                <div class="border-b border-slate-100 px-6 py-5">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-slate-900">Maintenance reminders</h2>
+                            <p class="mt-1 text-sm text-slate-500">Stay ahead of your next service.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-500">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">Service due reminders</h3>
+                            <p class="mt-1 text-sm text-slate-500">Remind me when a vehicle service is approaching.</p>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="serviceReminders" type="checkbox" checked class="peer sr-only">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-500">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">Mileage reminders</h3>
+                            <p class="mt-1 text-sm text-slate-500">Remind me when my vehicle approaches its next service mileage.</p>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="mileageReminders" type="checkbox" checked class="peer sr-only">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-between gap-4 px-6 py-5">
+                        <div>
+                            <h3 class="text-sm font-semibold text-slate-800">Reminder lead time</h3>
+                            <p class="mt-1 text-sm text-slate-500">How early should reminders appear?</p>
+                        </div>
+                        <select id="reminderLeadTime" class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                            <option value="3">3 days before</option>
+                            <option value="7" selected>7 days before</option>
+                            <option value="14">14 days before</option>
+                            <option value="30">30 days before</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" style="margin-bottom: 24px;">
+                <div class="border-b border-slate-100 px-6 py-5">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-slate-900">Notifications</h2>
+                            <p class="mt-1 text-sm text-slate-500">Choose which updates you want to receive.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-500">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">Email notifications</h3>
+                            <p class="mt-1 text-sm text-slate-500">Receive reminders and important account updates by email.</p>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="emailNotifications" type="checkbox" checked class="peer sr-only">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-500">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">Browser notifications</h3>
+                            <p class="mt-1 text-sm text-slate-500">Allow the app to request desktop notifications when supported.</p>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="browserNotifications" type="checkbox" class="peer sr-only">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center gap-4 px-6 py-5">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-500">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm font-semibold text-slate-800">Tips and product updates</h3>
+                            <p class="mt-1 text-sm text-slate-500">Occasional ideas to help you manage your garage.</p>
+                        </div>
+                        <label class="relative inline-flex cursor-pointer items-center">
+                            <input id="productUpdates" type="checkbox" class="peer sr-only">
+                            <span class="h-6 w-11 rounded-full bg-slate-200 transition peer-checked:bg-teal-600 peer-focus:ring-4 peer-focus:ring-teal-100 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-5"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" style="margin-bottom: 24px;">
+                <div class="border-b border-slate-100 px-6 py-5">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-slate-900">Vehicle preferences</h2>
+                            <p class="mt-1 text-sm text-slate-500">Set your default vehicle and preferred measurement units.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid gap-5 p-6 sm:grid-cols-2">
+                    <label class="block">
+                        <span class="mb-2 block text-sm font-semibold text-slate-700">Default vehicle</span>
+                        <select id="defaultVehicle" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                            <option value="">No default vehicle</option>
+                            <option value="BMW 120i">BMW 120i</option>
+                            <option value="Toyota Hilux">Toyota Hilux</option>
+                        </select>
+                        <p class="mt-2 text-xs text-slate-400">Demo choices; not loaded from your database.</p>
+                    </label>
+
+                    <label class="block">
+                        <span class="mb-2 block text-sm font-semibold text-slate-700">Distance units</span>
+                        <select id="distanceUnits" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                            <option value="km">Kilometres (km)</option>
+                            <option value="mi">Miles (mi)</option>
+                        </select>
+                    </label>
+
+                    <label class="block sm:col-span-2">
+                        <span class="mb-2 block text-sm font-semibold text-slate-700">Date format</span>
+                        <select id="dateFormat" class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10">
+                            <option value="DD/MM/YYYY">DD/MM/YYYY (South Africa)</option>
+                            <option value="YYYY-MM-DD">YYYY-MM-DD (ISO)</option>
+                            <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                        </select>
+                    </label>
+                </div>
+            </section>
+
+            <section class="mb-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" style="margin-bottom: 24px;">
+                <div class="flex items-start gap-4">
+                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
+                        <i class="fa-solid fa-user-shield text-lg"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-slate-900">Privacy and data</h2>
+                        <p class="mt-1 text-sm leading-6 text-slate-500">Your maintenance records help you track the history of your vehicles. Account deletion, data export, and privacy controls should be connected to appropriate backend workflows before they become operational.</p>
+                        <a href="/Security" class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-teal-800">
+                            Review security settings <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm" style="margin-top: 8px;">
+                <button id="resetSettings" type="button" class="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50">
+                    Reset preferences
+                </button>
+                <button id="saveSettings" type="button" class="rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700">
+                    <i class="fa-solid fa-check mr-2"></i>Save settings
+                </button>
+            </div>
+
+            <p id="settingsMessage" role="status" aria-live="polite" class="hidden rounded-xl border border-teal-200 bg-teal-50 p-4 text-sm font-medium text-teal-800"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const storageKey = "carServiceManagerDemoSettings";
+
+        const controls = [
+            "compactMode",
+            "serviceReminders",
+            "mileageReminders",
+            "reminderLeadTime",
+            "emailNotifications",
+            "browserNotifications",
+            "productUpdates",
+            "defaultVehicle",
+            "distanceUnits",
+            "dateFormat"
+        ];
+
+        const message = document.getElementById("settingsMessage");
+
+        function getCurrentSettings() {
+            const result = {};
+
+            controls.forEach(id => {
+                const element = document.getElementById(id);
+                result[id] = element.type === "checkbox"
+                    ? element.checked
+                    : element.value;
+            });
+
+            result.accent = document.querySelector('input[name="accent"]:checked')?.value || "teal";
+
+            return result;
+        }
+
+        function applySettings(settings) {
+            controls.forEach(id => {
+                const element = document.getElementById(id);
+                if (!(id in settings)) return;
+
+                if (element.type === "checkbox") {
+                    element.checked = Boolean(settings[id]);
+                } else {
+                    element.value = settings[id];
+                }
+            });
+
+            if (settings.accent) {
+                const accent = document.querySelector(
+                    `input[name="accent"][value="${settings.accent}"]`
+                );
+                if (accent) accent.checked = true;
+            }
+        }
+
+        function showMessage(text) {
+            message.textContent = text;
+            message.classList.remove("hidden");
+        }
+
+        function saveSettings() {
+            const settings = getCurrentSettings();
+
+            try {
+                localStorage.setItem(storageKey, JSON.stringify(settings));
+                showMessage("Your demo preferences have been saved in this browser.");
+            } catch {
+                showMessage("Browser storage is unavailable. Your preferences have not been saved.");
+            }
+        }
+
+        try {
+            const saved = localStorage.getItem(storageKey);
+            if (saved) applySettings(JSON.parse(saved));
+        } catch {
+            showMessage("Saved preferences could not be loaded from browser storage.");
+        }
+
+        document.getElementById("saveSettings").addEventListener("click", saveSettings);
+
+        document.getElementById("resetSettings").addEventListener("click", () => {
+            const defaults = {
+                compactMode: false,
+                serviceReminders: true,
+                mileageReminders: true,
+                reminderLeadTime: "7",
+                emailNotifications: true,
+                browserNotifications: false,
+                productUpdates: false,
+                defaultVehicle: "",
+                distanceUnits: "km",
+                dateFormat: "DD/MM/YYYY",
+                accent: "teal"
+            };
+
+            applySettings(defaults);
+
+            try {
+                localStorage.removeItem(storageKey);
+                showMessage("Preferences have been reset to their demo defaults.");
+            } catch {
+                showMessage("Preferences were reset on screen, but browser storage could not be cleared.");
+            }
+        });
+    })();
+</script>

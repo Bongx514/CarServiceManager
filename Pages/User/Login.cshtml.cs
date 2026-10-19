@@ -81,6 +81,7 @@ namespace CarServiceManager.Pages.User
                 HttpContext.Session.SetInt32("UserID", int.Parse(jwt.Claims.First(c => c.Type == "nameid").Value));
                 HttpContext.Session.SetString("UserName", jwt.Claims.First(c => c.Type == "unique_name").Value);
                 HttpContext.Session.SetString("UserEmail", jwt.Claims.First(c => c.Type == "email").Value);
+                HttpContext.Session.SetString("UserRoleID", jwt.Claims.First(c => c.Type == "role").Value);
 
                 if (user.pkiUserID != int.Parse(jwt.Claims.First(c => c.Type == "nameid").Value))
                 {
@@ -90,11 +91,20 @@ namespace CarServiceManager.Pages.User
                     return Page();
                 }
 
+                if (int.Parse(jwt.Claims.First(c => c.Type == "role").Value) == 1)
+                {
+                    TempData["Message"] = "You are not authorized to access the Admin dasboard.";
+                    await HttpContext.SignOutAsync("CookieAuth");
+                    HttpContext.Session.Clear();
+                    return Page();
+                }
+
                 var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, jwt.Claims.First(c => c.Type == "unique_name").Value),
                         new Claim(ClaimTypes.Email, jwt.Claims.First(c => c.Type == "email").Value),
-                        new Claim("UserID", jwt.Claims.First(c => c.Type == "nameid").Value)
+                        new Claim("UserID", jwt.Claims.First(c => c.Type == "nameid").Value),
+                        new Claim(ClaimTypes.Role, jwt.Claims.First(c => c.Type == "role").Value)
                     };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

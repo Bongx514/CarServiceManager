@@ -1,12 +1,14 @@
 using CarServiceManager.Data;
 using CarServiceManager.Models;
 using CarServiceManager.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarServiceManager.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly CarServiceContext _context;
@@ -17,8 +19,7 @@ namespace CarServiceManager.Pages
         }
 
         public Users? LoggedInUser { get; set; }
-        public List<vw_VehicleDetails>? MyVehicles { get; set; }
-        public string? txtMakeName { get; set; }
+
         [TempData]
         public string? NotificationMessage { get; set; }
 
@@ -34,10 +35,6 @@ namespace CarServiceManager.Pages
             LoggedInUser = await _context.Users
                 .Where(u => u.pkiUserID == UserID)
                 .FirstOrDefaultAsync();
-
-            MyVehicles = await _context.vw_VehicleDetails
-                .Where(u => u.fkiUserId == UserID)
-                .ToListAsync();
 
             return Page();
         }

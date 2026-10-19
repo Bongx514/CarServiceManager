@@ -1,0 +1,81 @@
+﻿<aside id="adminSidebar"
+       class="fixed inset-y-0 left-0 z-[70] flex w-72 max-w-[85vw] -translate-x-full flex-col border-r border-slate-200 bg-white shadow-xl transition-transform duration-300 ease-in-out lg:translate-x-0 lg:max-w-none"
+       aria-label="Admin navigation">
+
+        <div class="flex h-16 shrink-0 items-center justify-between border-b border-slate-100 px-5">
+            <div class="flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-600">
+                    <i class="fa-solid fa-gauge-high text-white"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-slate-900">Admin Menu</p>
+                    <p class="text-xs text-slate-400">Platform management</p>
+                </div>
+            </div>
+
+            <button id="closeAdminSidebar"
+                    type="button"
+                    aria-label="Close admin sidebar"
+                    class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-4 py-6">
+            <p class="mb-3 px-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                Overview
+            </p>
+
+            <div class="space-y-1">
+                <a href="/"
+                   class="flex items-center gap-3 rounded-xl bg-teal-50 px-3 py-3 text-sm font-semibold text-teal-700">
+                    <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+                    Dashboard
+                </a>
+            </div>
+
+            <p class="mb-3 mt-8 px-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                Management
+            </p>
+
+            <div class="space-y-1">
+                <a href="/Users"
+                   class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-teal-700">
+                    <i class="fa-solid fa-users w-5 text-center text-slate-400"></i>
+                    Users
+                </a>
+
+                <a href="/Vehicles"
+                   class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-teal-700">
+                    <i class="fa-solid fa-car w-5 text-center text-slate-400"></i>
+                    Vehicles
+                </a>
+
+                <a href="/Schedule"
+                   class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-teal-700">
+                    <i class="fa-solid fa-calendar-days w-5 text-center text-slate-400"></i>
+                    Service Schedule
+                </a>
+
+                <a href="/Services"
+                   class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-teal-700">
+                    <i class="fa-solid fa-screwdriver-wrench w-5 text-center text-slate-400"></i>
+                    Service Records
+                </a>
+
+                <a href="/Support"
+                   class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-50 hover:text-teal-700">
+                    <i class="fa-solid fa-headset w-5 text-center text-slate-400"></i>
+                    Support
+                </a>
+            </div>
+        </div>
+
+        <div class="shrink-0 border-t border-slate-100 p-4">
+            <a href="/Logout"
+               class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-500 transition hover:bg-red-50 hover:text-red-600">
+                <i class="fa-solid fa-right-from-bracket w-5 text-center"></i>
+                Log out
+            </a>
+        </div>
+    </aside>

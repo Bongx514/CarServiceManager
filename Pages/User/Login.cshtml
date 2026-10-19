@@ -3,79 +3,157 @@
 @{
 }
 
-<div class="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
-    <div class="w-full max-w-md">
-        <div class="text-center mb-8">
-            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-600 shadow-lg shadow-teal-600/20">
-                <i class="fa-solid fa-car text-white"></i>
+<div class="min-h-screen bg-white lg:grid lg:grid-cols-2">
+
+    <div class="relative hidden overflow-hidden bg-slate-950 lg:flex lg:flex-col lg:justify-between lg:p-12 xl:p-16">
+        <div class="absolute -right-32 -top-32 h-96 w-96 rounded-full border border-teal-500/10"></div>
+        <div class="absolute -right-16 -top-16 h-64 w-64 rounded-full border border-teal-500/10"></div>
+        <div class="absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-teal-500/10 blur-3xl"></div>
+
+        <a href="/" class="relative z-10 flex items-center gap-3">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500 shadow-lg shadow-teal-500/20">
+                <i class="fa-solid fa-car text-xl text-white"></i>
+            </div>
+            <div>
+                <span class="block text-base font-bold tracking-tight text-white">Car Service Manager</span>
+                <span class="mt-0.5 block text-xs font-medium uppercase tracking-widest text-slate-400">Administration</span>
+            </div>
+        </a>
+
+        <div class="relative z-10 max-w-xl">
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/10 px-3 py-1.5 text-xs font-semibold text-teal-300">
+                <i class="fa-solid fa-shield-halved"></i>
+                ADMINISTRATOR PORTAL
             </div>
 
-            <h1 class="text-2xl font-bold tracking-tight text-slate-900">
-                Car Service Manager
+            <h1 class="text-4xl font-bold leading-tight tracking-tight text-white xl:text-5xl">
+                Everything under control.
+                <span class="mt-2 block text-teal-400">Every vehicle. Every service.</span>
             </h1>
 
-            <p class="mt-2 text-sm text-slate-500">
-                Sign in to manage your vehicles and services
+            <p class="mt-6 max-w-lg text-base leading-7 text-slate-400">
+                Manage vehicle records, monitor maintenance activity, and keep your service operations organised from one central workspace.
             </p>
+
+            <div class="mt-10 space-y-5">
+                <div class="flex items-center gap-4">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-teal-400">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-white">Vehicle management</p>
+                        <p class="mt-1 text-sm text-slate-400">Keep vehicle information organised and accessible.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-teal-400">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-white">Maintenance oversight</p>
+                        <p class="mt-1 text-sm text-slate-400">Stay on top of service schedules and reminders.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-teal-400">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-white">Protected access</p>
+                        <p class="mt-1 text-sm text-slate-400">A dedicated sign-in experience for administrators.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/50">
-            <div class="mb-7">
-                <h2 class="text-xl font-semibold text-slate-900">
+        <div class="relative z-10 flex items-center justify-between border-t border-white/10 pt-6">
+            <p class="text-xs text-slate-500">© @DateTime.Now.Year Car Service Manager</p>
+            <span class="flex items-center gap-2 text-xs text-slate-400">
+                <span class="h-2 w-2 rounded-full bg-teal-400"></span>
+                Administration portal
+            </span>
+        </div>
+    </div>
+
+    <div class="flex min-h-screen flex-col justify-center px-5 py-10 sm:px-10 lg:px-12 xl:px-20">
+
+        <div class="mx-auto w-full max-w-md">
+
+            <div class="mb-10 lg:hidden">
+                <div class="flex items-center gap-3">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-600 shadow-lg shadow-teal-600/20">
+                        <i class="fa-solid fa-car text-lg text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-base font-bold tracking-tight text-slate-900">Car Service Manager</h1>
+                        <p class="text-xs font-medium uppercase tracking-widest text-slate-500">Administration</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-teal-700">
+                    <i class="fa-solid fa-user-shield text-xl"></i>
+                </div>
+
+                <p class="text-sm font-semibold text-teal-700">ADMINISTRATOR ACCESS</p>
+
+                <h2 class="mt-2 text-3xl font-bold tracking-tight text-slate-900">
                     Welcome back
                 </h2>
 
-                <p class="mt-1 text-sm text-slate-500">
-                    Enter your details to continue.
+                <p class="mt-3 text-sm leading-6 text-slate-500">
+                    Sign in with your administrator credentials to access your workspace.
                 </p>
-
-                @if (!string.IsNullOrWhiteSpace(TempData["Message"] as string))
-                {
-                    <div class="mb-6 flex items-start rounded-xl border border-red-200 bg-red-50 p-4">
-                        <i class="fa-solid fa-triangle-exclamation text-red-200"></i>
-                        <p class="text-sm text-red-700">
-                            @TempData["Message"]
-                        </p>
-                    </div>
-                }
             </div>
 
+            @if (!string.IsNullOrWhiteSpace(TempData["Message"] as string))
+            {
+                <div role="alert" class="mb-6 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4">
+                    <i class="fa-solid fa-circle-exclamation mt-0.5 text-red-500"></i>
+                    <p class="text-sm leading-5 text-red-700">
+                        @TempData["Message"]
+                    </p>
+                </div>
+            }
+
             <form method="post" class="space-y-5">
+
                 <div>
-                    <label for="EmailAddress"
-                           class="mb-2 block text-sm font-medium text-slate-700">
+                    <label for="EmailAddress" class="mb-2 block text-sm font-semibold text-slate-700">
                         Email address
                     </label>
 
                     <div class="relative">
-                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
-                            <i class="fa-regular fa-envelope text-slate-400"></i>
-                        </div>
+                        <i class="fa-regular fa-envelope pointer-events-none absolute inset-y-0 top-5 left-0 flex items-center pl-4 text-slate-400"></i>
 
                         <input type="email"
                                id="EmailAddress"
                                asp-for="LoginRequest.userEmail"
-                               placeholder="you@example.com"
-                               autocomplete="email"
+                               placeholder="admin@example.com"
+                               autocomplete="username"
                                required
-                               class="block w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" />
-
+                               class="block w-full rounded-xl border border-slate-300 bg-white py-3.5 pl-11 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" />
                     </div>
-                </div>
 
+                    <span asp-validation-for="LoginRequest.userEmail" class="mt-1 block text-xs text-red-600"></span>
+                </div>
 
                 <div>
                     <div class="mb-2 flex items-center justify-between">
-                        <label for="Password"
-                               class="block text-sm font-medium text-slate-700">
+                        <label for="Password" class="block text-sm font-semibold text-slate-700">
                             Password
                         </label>
+
+                        <a href="/forgot-password" class="text-xs font-semibold text-teal-700 transition hover:text-teal-800 hover:underline">
+                            Forgot password?
+                        </a>
                     </div>
 
                     <div class="relative">
-                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
-                            <i class="fa-solid fa-lock text-slate-400"></i>
-                        </div>
+                        <i class="fa-solid fa-lock pointer-events-none absolute inset-y-0 top-5 left-0 flex items-center pl-4 text-slate-400"></i>
 
                         <input type="password"
                                id="Password"
@@ -83,45 +161,68 @@
                                placeholder="Enter your password"
                                autocomplete="current-password"
                                required
-                               class="block w-full rounded-xl border border-slate-300 bg-white py-3 pl-11 pr-4 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" />
+                               class="block w-full rounded-xl border border-slate-300 bg-white py-3.5 pl-11 pr-12 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" />
 
+                        <button type="button"
+                                onclick="togglePasswordVisibility()"
+                                aria-label="Show password"
+                                id="togglePasswordButton"
+                                class="absolute inset-y-0 right-0 flex items-center px-4 text-slate-400 transition hover:text-teal-600">
+                            <i id="passwordVisibilityIcon" class="fa-regular fa-eye"></i>
+                        </button>
                     </div>
-                </div>
 
+                    <span asp-validation-for="LoginRequest.password" class="mt-1 block text-xs text-red-600"></span>
+                </div>
 
                 <div class="flex items-center">
                     <input type="checkbox"
                            id="remember"
-                           class="h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500">
+                           name="RememberMe"
+                           value="true"
+                           class="h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
 
-                    <label for="remember"
-                           class="ml-2 text-sm text-slate-600">
+                    <label for="remember" class="ml-2.5 text-sm text-slate-600">
                         Remember me
                     </label>
                 </div>
 
                 <button type="submit"
-                        class="flex w-full items-center justify-center rounded-xl bg-teal-600 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-600/20 transition duration-200 hover:bg-teal-700 hover:shadow-teal-600/30 focus:outline-none focus:ring-4 focus:ring-teal-500/20 active:scale-[0.99]">
-                    Sign in
-                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                        class="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-teal-600/20 transition hover:bg-teal-700 hover:shadow-teal-600/30 focus:outline-none focus:ring-4 focus:ring-teal-500/20 active:scale-[0.99]">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Sign in to admin portal
                 </button>
+
             </form>
 
-            <div class="mt-7 border-t border-slate-100 pt-6 text-center">
-                <p class="text-sm text-slate-500">
-                    Don't have an account?
-
-                    <a href="/Registration"
-                       class="font-semibold text-teal-600 hover:text-teal-700">
-                        Create an account
-                    </a>
-                </p>
+            <div class="mt-8 border-t border-slate-100 pt-6">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-shield-halved mt-0.5 text-slate-400"></i>
+                    <p class="text-xs leading-5 text-slate-500">
+                        This area is restricted to authorised administrators. If you cannot access your account, use the password recovery option above.
+                    </p>
+                </div>
             </div>
 
-        </div>
+            <p class="mt-8 text-center text-xs text-slate-400 lg:hidden">
+                © @DateTime.Now.Year Car Service Manager. All rights reserved.
+            </p>
 
-        <p class="mt-6 text-center text-xs text-slate-400">
-            © @DateTime.Now.Year Car Service Manager. All rights reserved.
-        </p>
+        </div>
     </div>
 </div>
+
+<script>
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("Password");
+        const visibilityIcon = document.getElementById("passwordVisibilityIcon");
+        const toggleButton = document.getElementById("togglePasswordButton");
+
+        const isPasswordHidden = passwordInput.type === "password";
+
+        passwordInput.type = isPasswordHidden ? "text" : "password";
+        visibilityIcon.classList.toggle("fa-eye", !isPasswordHidden);
+        visibilityIcon.classList.toggle("fa-eye-slash", isPasswordHidden);
+        toggleButton.setAttribute("aria-label", isPasswordHidden ? "Hide password" : "Show password");
+    }
+</script>

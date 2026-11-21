@@ -1,1 +1,18 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@{
+    var UserID = HttpContextAccessor?.HttpContext?.Session.GetInt32("UserID");
+}
+
+@if(UserID != null)
+{
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-2 border-t border-slate-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-xs text-slate-400">
+                Car Service Manager · Administration Dashboard
+            </p>
+            <p class="text-xs text-slate-400">
+                Dashboard figures are illustrative until connected to live data.
+            </p>
+        </div>
+    </div>
+}

@@ -37,7 +37,7 @@ namespace CarServiceManager.Helpers
                     return (false, "User with this email already exists.");
                 }
 
-                user.hashPassword = HashPassword(user.hashPassword);
+                user.hashPassword = HashPassword(user.hashPassword ?? "");
                 user.isActive = true;
                 user.isBlocked = false;
                 user.dateCreated = DateTime.UtcNow;
